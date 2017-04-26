@@ -26,12 +26,11 @@ int main()
 
 	long val;
 	cin >> val;
-	cout << "\n";
 	myList.remove(val);
 
-	cout << "Список с удаленным элементом: ";
+	cout << "\nСписок с удаленным элементом: ";
 	copy(myList.begin(), myList.end(), ostream_iterator<long>(cout, " "));
-	system("pause");
+
 
 
 	list<long> myList2; // объявляем пустой список 2
@@ -41,23 +40,29 @@ int main()
 	{
 		myList2.push_back(rand() % 20); // добавляем в список новые элементы
 	}
-	cout << "Список 2: ";
+	cout << "\nСписок 2: ";
 	copy(myList2.begin(), myList2.end(), ostream_iterator<long>(cout, " "));
 	cout << "\n";
 
-	system("pause");
 
 	int n;
-	cout << "\n Введите количество оставляемых элементов из list 1 \n";
+	cout << "\nВведите количество оставляемых элементов в list 1 \n";
 	cin >> n;
 
 	myList.resize(n);
-	cout << "Список с удаленными элементами: ";
+	cout << "\nСписок с удаленными элементами: ";
 	copy(myList.begin(), myList.end(), ostream_iterator<long>(cout, " "));
-	system("pause");
 
+	
+	myList.sort();
+	myList2.sort();
 	myList.merge(myList2);
-	cout << "\nОбъединили списки: ";
+	cout << "\nОбъединили списки в list 1: ";
 	copy(myList.begin(), myList.end(), ostream_iterator<long>(cout, " "));
+	cout << "\nЧто осталось в  list 2: ";
+	copy(myList2.begin(), myList2.end(), ostream_iterator<long>(cout, " "));
+
+
+	system("pause");
 
 }
