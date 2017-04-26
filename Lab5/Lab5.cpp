@@ -29,9 +29,35 @@ int main()
 	cout << "\n";
 	myList.remove(val);
 
-	cout << "Список: ";
+	cout << "Список с удаленным элементом: ";
 	copy(myList.begin(), myList.end(), ostream_iterator<long>(cout, " "));
+	system("pause");
+
+
+	list<long> myList2; // объявляем пустой список 2
+	srand(time(NULL));
+
+	for (int i = 0; i < 15; i++)
+	{
+		myList2.push_back(rand() % 20); // добавляем в список новые элементы
+	}
+	cout << "Список 2: ";
+	copy(myList2.begin(), myList2.end(), ostream_iterator<long>(cout, " "));
+	cout << "\n";
 
 	system("pause");
+
+	int n;
+	cout << "\n Введите количество оставляемых элементов из list 1 \n";
+	cin >> n;
+
+	myList.resize(n);
+	cout << "Список с удаленными элементами: ";
+	copy(myList.begin(), myList.end(), ostream_iterator<long>(cout, " "));
+	system("pause");
+
+	myList.merge(myList2);
+	cout << "\nОбъединили списки: ";
+	copy(myList.begin(), myList.end(), ostream_iterator<long>(cout, " "));
 
 }
