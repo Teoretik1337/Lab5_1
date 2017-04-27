@@ -23,10 +23,13 @@ int main()
 	cout << "Список: ";
 	copy(myList.begin(), myList.end(), ostream_iterator<long>(cout, " "));
 	cout << "\n";
-
-	long val;
+	//добавить слово ввод
+	int val;
+	cout << "\nВведите номер удаляемого элемента: ";
 	cin >> val;
-	myList.remove(val);
+	std::list<long>::iterator range = myList.begin();
+	std::advance(range, val-1);
+	myList.erase(range);
 
 	cout << "\nСписок с удаленным элементом: ";
 	copy(myList.begin(), myList.end(), ostream_iterator<long>(cout, " "));
@@ -38,21 +41,31 @@ int main()
 
 	for (int i = 0; i < 15; i++)
 	{
-		myList2.push_back(rand() % 20); // добавляем в список новые элементы
+		myList2.push_back(rand() % 20); // добавляем в список 2 новые элементы
 	}
 	cout << "\nСписок 2: ";
 	copy(myList2.begin(), myList2.end(), ostream_iterator<long>(cout, " "));
 	cout << "\n";
 
+	//////////////////////////////////////////////////////////////////////
 
 	int n;
-	cout << "\nВведите количество оставляемых элементов в list 1 \n";
+	cout << "\nВведите номер элемента с которого будем удалять: \n";
 	cin >> n;
+	cout << "\nВведите количество \n";
+	int count;
+	cin >> count;
+	
+	for (int i = 0; i < count; i++)
+	{
+		std::list<long>::iterator range = myList.begin();
+		std::advance(range, n);
+		myList.erase(range);
+	}
 
-	myList.resize(n);
 	cout << "\nСписок с удаленными элементами: ";
 	copy(myList.begin(), myList.end(), ostream_iterator<long>(cout, " "));
-
+	//////////////////////////////////////////////////////////////////////
 	
 	myList.sort();
 	myList2.sort();
